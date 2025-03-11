@@ -4,8 +4,12 @@ import BillLayout from "./components/BillLayout";
 import Layout from "../../../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { allProductdata } from "../../../../store/product";
+import CustomersName from "./components/CustomersName";
 
 const BillMaking = () => {
+  const { customerName } = useSelector((state) => state.billData);
+  const { status } = useSelector((state) => state.product);
+
   const dispatch = useDispatch();
   const { allProduct } = useSelector((state) => state.product);
   console.log(allProduct);
@@ -26,7 +30,11 @@ const BillMaking = () => {
                 ))}
           </div>
           <div className="w-2/6 ">
-            <BillLayout />
+            {customerName !== null ? (
+              <BillLayout customerName={customerName} />
+            ) : (
+              <CustomersName />
+            )}
           </div>
         </div>
       </Layout>

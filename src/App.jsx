@@ -13,6 +13,7 @@ import Register from "./pages/auth/Register";
 import History from "./pages/History";
 import { Provider } from "react-redux";
 import store from "../store/store";
+import CustomersName from "./pages/billPage/bill/components/CustomersName";
 
 const App = () => {
   return (

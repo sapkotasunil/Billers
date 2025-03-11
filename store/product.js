@@ -41,3 +41,21 @@ export function allProductdata() {
     dispatch(setAllProduct(JSON.parse(localStorage.getItem("productData"))));
   };
 }
+
+export function editProduct(productName, value, types) {
+  return function editProductThunk(dispatch) {
+    let productDatas = JSON.parse(localStorage.getItem("productData")) || [];
+    const index = productDatas.findIndex((item) => item.name == productName);
+    if (types == "Add Stock") {
+      let oldStock = parseInt(productDatas[index].quantity);
+      let newStock = parseInt(value);
+      productDatas[index].quantity = oldStock + newStock;
+    } else {
+      productDatas[index].price = value;
+    }
+    localStorage.setItem("productData", JSON.stringify(productDatas));
+
+    dispatch(setAllProduct(productDatas));
+    dispatch(setStatus("success"));
+  };
+}

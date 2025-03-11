@@ -1,4 +1,5 @@
 import React from "react";
+import StockQuantityCardButtons from "./stockQuantityCard/StockQuantityCardButtons";
 
 const StockQutityCard = ({ data }) => {
   return (
@@ -26,6 +27,18 @@ const StockQutityCard = ({ data }) => {
           Quantity Available:{" "}
           <span className="font-semibold">{data.quantity}</span>
         </p>
+        <br />
+        <div className="flex w-full justify-between px-5">
+          <StockQuantityCardButtons
+            types={"Add Stock"}
+            productName={data.name}
+            dataQuantity={data.Quantity}
+          />
+          <StockQuantityCardButtons
+            types={"Edit Price"}
+            productName={data.name}
+          />
+        </div>
       </div>
     </div>
   );

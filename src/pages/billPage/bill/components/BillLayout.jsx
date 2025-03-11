@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { informationf } from "../../../../../store/storeslice";
 
-const BillLayout = () => {
+const BillLayout = ({ customerName }) => {
   const dispatch = useDispatch();
   const { informationFetch, status } = useSelector((state) => state.stores);
-
+  console.log(customerName);
   const date = new Date().toLocaleDateString();
   useEffect(() => {
     dispatch(informationf());
@@ -51,7 +51,7 @@ const BillLayout = () => {
       {/* Customer Details */}
       <div className="mt-4 border-t pt-2">
         <h2 className="text-lg font-semibold">Bill To:</h2>
-        <p className="text-gray-700">{billData?.customer}</p>
+        <p className="text-gray-700">{customerName}</p>
       </div>
 
       {/* Bill Table */}
