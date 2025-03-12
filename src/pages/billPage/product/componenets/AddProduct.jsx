@@ -13,7 +13,7 @@ const AddProduct = () => {
   return (
     <div
       onClick={openPopup}
-      className="cursor-pointer w-[307.2px] h-[460.2px] flex flex-col items-center justify-center border-2 border-gray-600 rounded-md bg-green-300 px-3 py-1 space-y-3"
+      className="cursor-pointer w-[250px] h-[381px] flex flex-col items-center justify-center border-2 border-gray-600 rounded-md bg-green-300 px-3 py-1 space-y-3"
     >
       <h1 className="text-8xl font-semibold">
         <FiPlus />

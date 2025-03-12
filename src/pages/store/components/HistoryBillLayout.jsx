@@ -1,21 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { informationf } from "../../../../../store/storeslice";
-import { allBillData } from "../../../../../store/billHistory";
+
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { setCustomerName } from "../../../../../store/billdata";
+import { informationf } from "../../../../store/storeslice";
 
-const BillLayout = ({ customerName }) => {
+const HistoryBillLayout = ({ customerName, date, products }) => {
   const dispatch = useDispatch();
   const { informationFetch } = useSelector((state) => state.stores);
-  const { products } = useSelector((state) => state.billData);
-  const [Checkout, setCheckout] = useState(false);
-  const anotherBillHandler = () => {
-    dispatch(setCustomerName(null));
-  };
-
-  const date = new Date().toLocaleDateString();
   const billRef = useRef(); // Reference to capture the bill section
 
   useEffect(() => {
@@ -28,11 +20,6 @@ const BillLayout = ({ customerName }) => {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-
-  const submitHandler = () => {
-    dispatch(allBillData({ customerName, products, totalAmount, date }));
-    setCheckout(true);
-  };
 
   //  Function to Export PDF
   const exportToPDF = () => {
@@ -48,7 +35,7 @@ const BillLayout = ({ customerName }) => {
   };
 
   return (
-    <div className="w-fit mx-auto py-2 px-6 bg-white shadow-lg rounded-lg   border  ">
+    <div className="w-fit mx-auto p-6  bg-white shadow-lg rounded-lg border fixed items-center  top-20 shadow-black  ml-8 ">
       {/* Bill Section to Capture */}
       <div ref={billRef}>
         {/* Header */}
@@ -58,26 +45,26 @@ const BillLayout = ({ customerName }) => {
           </h1>
           <p className="text-sm text-gray-600">{informationFetch?.address}</p>
         </div>
-        <div className="flex justify-between px-1 gap-4">
+        <div className="flex justify-between px-3">
           <div className="text-center flex items-end">
             <p className="text-sm text-gray-600">Date: {date}</p>
           </div>
-          <div className="flex  flex-col mt-2 font-semibold justify-end">
-            <h1>proprietor: {informationFetch?.owner}</h1>
+          <div className="flex flex-col font-semibold justify-end">
+            <h1>Proprietor: {informationFetch?.owner}</h1>
             <h1>Contact No: {informationFetch?.contact}</h1>
           </div>
         </div>
 
         {/* Customer Details */}
-        <div className="mt-2 border-t pt-2">
+        <div className="mt-4 border-t pt-2">
           <h2 className="text-lg font-semibold">Bill To:</h2>
           <p className="text-gray-700">{customerName}</p>
         </div>
 
         {/* Bill Table */}
-        <div className="mt-2">
+        <div className="mt-4">
           {products.length === 0 ? (
-            <p className="text-center text-gray-500 mt-2">
+            <p className="text-center text-gray-500 mt-4">
               No products added to the bill.
             </p>
           ) : (
@@ -120,34 +107,16 @@ const BillLayout = ({ customerName }) => {
       {/* Footer */}
       <div className="mt-4 text-center text-gray-600 text-sm   flex justify-between">
         <div>
-          {Checkout == false ? (
-            <button
-              onClick={submitHandler}
-              className="text-black cursor-pointer bg-green-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-green-400"
-            >
-              Checkout
-            </button>
-          ) : (
-            <>
-              <button
-                onClick={exportToPDF}
-                className="ml-3 text-black cursor-pointer bg-blue-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-blue-400"
-              >
-                Export PDF
-              </button>
-              <button
-                onClick={anotherBillHandler}
-                className="ml-3 text-black cursor-pointer bg-green-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-blue-400"
-              >
-                Create Another Bill +
-              </button>
-            </>
-          )}
+          <button
+            onClick={exportToPDF}
+            className="ml-3 text-black cursor-pointer bg-blue-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-blue-400"
+          >
+            Export PDF
+          </button>
         </div>
       </div>
-      <h1 className="text-red-400 mt-2">* Add 0 item to remove items</h1>
     </div>
   );
 };
 
-export default BillLayout;
+export default HistoryBillLayout;

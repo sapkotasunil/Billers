@@ -32,15 +32,16 @@ const CustomersName = () => {
       ) : (
         <form
           onSubmit={handleSubmit}
-          className="px-2 py-3 border-solid border-2 border-green-500 w-fit rounded-lg"
+          className="px-2 py-3 border-solid border-2 border-green-500 w-fit rounded-lg bg-yellow-300"
           action=""
         >
           <h1 className="text-2xl font-semibold ">Enter customer Name:</h1>
           <input
+            autoFocus
             value={customerName}
             onChange={handleChange}
             type="text"
-            className="h-8 w-60 rounded-lg"
+            className="  h-8 w-60 rounded-lg px-1"
           />{" "}
           <br />
           <button className="bg-green-600 px-5 py-1 rounded-lg mt-2 hover:bg-green-500 ">

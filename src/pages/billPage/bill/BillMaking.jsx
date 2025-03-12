@@ -21,7 +21,7 @@ const BillMaking = () => {
     <>
       <Layout>
         <div className="w-full h-full flex bg-gradient-to-r from-yellow-500 to-green-500 px-5 ">
-          <div className="flex flex-wrap gap-3 w-4/6">
+          <div className="flex flex-wrap gap-3 w-5/6">
             {!allProduct
               ? ""
               : allProduct.map((data, idx) => (

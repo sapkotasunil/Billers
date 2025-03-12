@@ -4,14 +4,13 @@ import { billDatas } from "../../../../../store/billdata";
 
 const ProductCard = ({ data }) => {
   const dispatch = useDispatch();
-  const [productNumber, setProductNumber] = useState(0);
+  const [productNumber, setProductNumber] = useState("");
   const [product, setProduct] = useState({
     name: data.name,
     price: data.price,
     quantity: 0,
   });
 
-  // Update product.quantity when productNumber changes
   useEffect(() => {
     setProduct((prev) => ({ ...prev, quantity: productNumber }));
   }, [productNumber]);
@@ -23,9 +22,9 @@ const ProductCard = ({ data }) => {
   };
 
   return (
-    <div className="w-[300px] h-fit border-2 border-gray-600 bg-white shadow-lg rounded-lg p-4 space-y-4">
+    <div className="w-[200px] lg:w-[16vw] h-auto border border-gray-400 bg-white shadow-md rounded-lg p-3 space-y-2 transition-all">
       {/* Product Image */}
-      <div className="w-full h-[250px] rounded-md overflow-hidden bg-gray-200 flex justify-center items-center">
+      <div className="w-full h-[150px] rounded-md overflow-hidden bg-gray-200 flex justify-center items-center">
         <img
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           src={data.image}
@@ -38,29 +37,35 @@ const ProductCard = ({ data }) => {
       </div>
 
       {/* Product Details */}
-      <div className="flex flex-col items-center">
-        <h1 className="text-xl font-bold text-gray-800">{data.name}</h1>
-        <p className="text-lg font-semibold text-yellow-600">
+      <div className="flex flex-col items-center text-center">
+        <h1 className="text-sm md:text-md font-semibold text-gray-800">
+          {data.name}
+        </h1>
+        <p className="text-sm font-semibold text-yellow-600">
           Rs. {data.price}
         </p>
       </div>
 
       {/* Quantity Controls */}
-      <div className="flex items-center justify-between border-2 border-gray-600 rounded-md overflow-hidden">
+      <div className="flex items-center justify-between border border-gray-400 rounded-md overflow-hidden">
         <button
-          className="w-16 h-12 bg-red-500 text-white text-2xl font-bold hover:bg-red-600 transition"
+          className="w-12 h-10 bg-red-500 text-white text-lg font-bold hover:bg-red-600 transition"
           onClick={() => setProductNumber((prev) => Math.max(0, prev - 1))}
         >
           -
         </button>
         <input
           type="number"
-          className="w-full h-12 bg-gray-100 text-center text-xl font-semibold border-none outline-none"
+          className="w-full h-10 bg-gray-100 text-center text-md font-semibold border-none outline-none 
+             [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none 
+             [&::-moz-appearance]:textfield"
           value={productNumber}
+          placeholder="0"
           onChange={(e) => setProductNumber(Number(e.target.value))}
         />
+
         <button
-          className="w-16 h-12 bg-green-500 text-white text-2xl font-bold hover:bg-green-600 transition"
+          className="w-12 h-10 bg-green-500 text-white text-lg font-bold hover:bg-green-600 transition"
           onClick={() => setProductNumber((prev) => prev + 1)}
         >
           +
@@ -70,7 +75,7 @@ const ProductCard = ({ data }) => {
       {/* Add Button */}
       <button
         onClick={submitHandler}
-        className="w-full h-12 bg-blue-600 text-white text-lg font-semibold rounded-md hover:bg-blue-700 transition"
+        className="w-full h-10 bg-blue-600 text-white text-sm font-semibold rounded-md hover:bg-blue-700 transition"
       >
         Add
       </button>

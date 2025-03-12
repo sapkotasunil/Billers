@@ -3,9 +3,9 @@ import StockQuantityCardButtons from "./stockQuantityCard/StockQuantityCardButto
 
 const StockQutityCard = ({ data }) => {
   return (
-    <div className="w-[300px] h-fit border-2 border-gray-600 bg-white shadow-lg rounded-lg p-4 space-y-4">
+    <div className="w-[250px] h-fit border-2 border-gray-600 bg-white shadow-lg rounded-lg p-4 space-y-4">
       {/* Product Image */}
-      <div className="w-full h-[250px] rounded-md overflow-hidden bg-gray-200 flex justify-center items-center">
+      <div className="w-full h-[200px] rounded-md overflow-hidden bg-gray-200 flex justify-center items-center">
         <img
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
           src={data.image}
@@ -18,7 +18,7 @@ const StockQutityCard = ({ data }) => {
       </div>
 
       {/* Product Details */}
-      <div className="flex flex-col items-center space-y-2">
+      <div className="flex flex-col items-center space-y-">
         <h1 className="text-xl font-bold text-gray-800">{data.name}</h1>
         <p className="text-lg font-semibold text-yellow-600">
           Price: {data.price}
@@ -28,7 +28,7 @@ const StockQutityCard = ({ data }) => {
           <span className="font-semibold">{data.quantity}</span>
         </p>
         <br />
-        <div className="flex w-full justify-between px-5">
+        <div className="flex w-full justify-between px-2">
           <StockQuantityCardButtons
             types={"Add Stock"}
             productName={data.name}

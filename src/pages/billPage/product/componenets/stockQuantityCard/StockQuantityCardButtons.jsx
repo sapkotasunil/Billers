@@ -14,7 +14,7 @@ const StockQuantityCardButtons = ({ productName, types, dta }) => {
       {!openInput ? (
         <button
           onClick={openInputHndler}
-          className="cursor-pointer bg-green-500 px-3 py-1 rounded-md font-semibold max-h-7  hover:bg-green-400"
+          className="cursor-pointer h-fit bg-green-500 px-3 py-1 rounded-md font-semibold max-h-7  hover:bg-green-400"
         >
           {types}
         </button>
