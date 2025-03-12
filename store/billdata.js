@@ -13,14 +13,25 @@ const billData = createSlice({
       state.customerName = action.payload;
     },
     setProducts(state, action) {
-      state.products = [...state.products, action.payload];
+      const newProduct = action.payload;
+      const existingProductIndex = state.products.findIndex(
+        (item) => item.name === newProduct.name
+      );
+
+      if (existingProductIndex !== -1) {
+        // If product exists, update the quantity
+        state.products[existingProductIndex].quantity = newProduct.quantity;
+      } else {
+        // Otherwise, add a new product
+        state.products.push(newProduct);
+      }
     },
-    setTotalAmount(state, action) {
-      state.totalAmount = action.payload;
-    },
-    setDate(state, action) {
-      state.date = action.payload;
-    },
+  },
+  setTotalAmount(state, action) {
+    state.totalAmount = action.payload;
+  },
+  setDate(state, action) {
+    state.date = action.payload;
   },
 });
 
@@ -31,5 +42,12 @@ export default billData.reducer;
 export function CustomerName(name) {
   return (dispatch) => {
     dispatch(setCustomerName(name));
+  };
+}
+
+export function billDatas(product) {
+  return function billDatasThunk(dispatch) {
+    dispatch(setProducts(product));
+    console.log(product);
   };
 }

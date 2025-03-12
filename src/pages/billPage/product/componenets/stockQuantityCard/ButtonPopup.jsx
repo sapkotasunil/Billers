@@ -16,7 +16,7 @@ const ButtonPopup = ({ closeInputHndler, types, productName }) => {
   };
   return (
     <>
-      <div className="h-fit w-fit px-3 py-1 border-solid border-blue-500 border-2 rounded-lg ">
+      <div className="h-fit w-fit px-3 py-1 border-solid border-blue-500 border-2 rounded-lg bg-green-300 ">
         <form
           onSubmit={submitHandler}
           className="flex flex-col justify-center gap-3"

@@ -31,7 +31,7 @@ export function addProduct(data) {
     if (!Array.isArray(productDatas)) {
       productDatas = [];
     }
-    productDatas.push(data);
+    productDatas.unshift(data);
     localStorage.setItem("productData", JSON.stringify(productDatas));
     dispatch(setStatus("success"));
   };

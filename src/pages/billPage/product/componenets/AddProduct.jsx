@@ -5,9 +5,7 @@ import ProductStockForm from "./ProductStockForm";
 const AddProduct = () => {
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    console.log("Popup state changed:", open);
-  }, [open]);
+  useEffect(() => {}, [open]);
 
   const closePopup = () => setOpen(false);
   const openPopup = () => setOpen(true);

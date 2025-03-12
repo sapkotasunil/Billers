@@ -12,7 +12,6 @@ const BillMaking = () => {
 
   const dispatch = useDispatch();
   const { allProduct } = useSelector((state) => state.product);
-  console.log(allProduct);
 
   useEffect(() => {
     dispatch(allProductdata());

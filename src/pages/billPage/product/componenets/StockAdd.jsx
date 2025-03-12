@@ -8,7 +8,7 @@ import StockQutityCard from "./StockQuntityCard";
 
 const StockAdd = () => {
   const { allProduct, status } = useSelector((state) => state.product);
-  console.log(allProduct);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(allProductdata());
