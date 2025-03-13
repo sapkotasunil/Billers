@@ -97,7 +97,9 @@ const BillLayout = ({ customerName }) => {
                     <tr key={index} className="">
                       <td className="border px-2 py-1 ">{item.name}</td>
                       <td className="border px-2 py-1">Rs. {item.price}</td>
-                      <td className="border px-2 py-1">{item.quantity}</td>
+                      <td className="border px-2 text-center py-1">
+                        {item.quantity}
+                      </td>
                       <td className="border px-2 py-1">
                         Rs. {item.price * item.quantity}
                       </td>

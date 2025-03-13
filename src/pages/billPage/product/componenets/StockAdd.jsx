@@ -5,6 +5,7 @@ import Layout from "../../../../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { allProductdata } from "../../../../../store/product";
 import StockQutityCard from "./StockQuntityCard";
+import StockRemaingWarning from "./StockRemaingWarning";
 
 const StockAdd = () => {
   const { allProduct, status } = useSelector((state) => state.product);
@@ -15,6 +16,17 @@ const StockAdd = () => {
   }, [status]);
   return (
     <Layout>
+      <div>
+        {!allProduct
+          ? ""
+          : allProduct
+              .filter(
+                (product) => product.quantity < 10 && product.quantity > 0
+              )
+              .map((product, idx) => (
+                <StockRemaingWarning key={idx} product={product} />
+              ))}
+      </div>
       <div className="flex gap-3 flex-wrap px-3">
         <AddProduct />
         {!allProduct

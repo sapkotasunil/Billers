@@ -4,7 +4,7 @@ import { billDatas } from "../../../../../store/billdata";
 
 const ProductCard = ({ data }) => {
   const dispatch = useDispatch();
-  const [productNumber, setProductNumber] = useState("");
+  const [productNumber, setProductNumber] = useState(0);
   const [product, setProduct] = useState({
     name: data.name,
     price: data.price,
@@ -43,6 +43,9 @@ const ProductCard = ({ data }) => {
         </h1>
         <p className="text-sm font-semibold text-yellow-600">
           Rs. {data.price}
+        </p>
+        <p className="text-sm font-semibold  text-green-600">
+          Available Stock: {data.quantity}
         </p>
       </div>
 
