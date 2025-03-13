@@ -6,17 +6,31 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { status } = useSelector((state) => state.auth);
+  const { status, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const loginData = (data) => {
     dispatch(login(data));
   };
-  useEffect(() => {
-    if (status === "sucess") {
-      dispatch(setStatus(null));
+  const loggedUser = JSON.parse(localStorage.getItem("logged"));
+  const storeInformation = JSON.parse(localStorage.getItem("storeInformation"));
+  if (!loggedUser && !storeInformation) {
+    useEffect(() => {
+      if (status === "sucess") {
+        dispatch(setStatus(null));
+        navigate("/storebillform");
+      }
+    }, [status]);
+  }
+  if (loggedUser && !storeInformation) {
+    useEffect(() => {
       navigate("/storebillform");
-    }
-  }, [status]);
+    }, []);
+  }
+  if (loggedUser && storeInformation) {
+    useEffect(() => {
+      navigate("/billmaking");
+    }, []);
+  }
 
   return (
     <>

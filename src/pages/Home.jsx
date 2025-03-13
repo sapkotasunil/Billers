@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../components/Layout";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -14,7 +13,7 @@ const Home = () => {
           <p className="mt-4 text-lg">
             Billing Without the Stress, Business Without Limits
           </p>
-          <Link to={"/register"}>
+          <Link to={"/login"}>
             <button className="mt-6 px-6 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-200 transition">
               Get Started
             </button>

@@ -13,6 +13,9 @@ const authSlice = createSlice({
     setStatus(state, action) {
       state.status = action.payload;
     },
+    setLoggedUser(state, action) {
+      state.loggedUser = action.payload;
+    },
   },
 });
 export const { setUser, setStatus } = authSlice.actions;

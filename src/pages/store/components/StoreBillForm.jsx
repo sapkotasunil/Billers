@@ -8,7 +8,6 @@ const StoreBillForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { status } = useSelector((state) => state.stores);
-  console.log(status);
   const [store, setStore] = useState({
     name: "",
     owner: "",
