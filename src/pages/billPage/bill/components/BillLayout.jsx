@@ -4,7 +4,7 @@ import { informationf } from "../../../../../store/storeslice";
 import { allBillData } from "../../../../../store/billHistory";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { setCustomerName } from "../../../../../store/billdata";
+import { NullBillDatas, setCustomerName } from "../../../../../store/billdata";
 
 const BillLayout = ({ customerName }) => {
   const dispatch = useDispatch();
@@ -13,6 +13,7 @@ const BillLayout = ({ customerName }) => {
   const [Checkout, setCheckout] = useState(false);
   const anotherBillHandler = () => {
     dispatch(setCustomerName(null));
+    dispatch(NullBillDatas());
   };
 
   const date = new Date().toLocaleDateString();

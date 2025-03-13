@@ -13,25 +13,22 @@ const billData = createSlice({
       state.customerName = action.payload;
     },
     setProducts(state, action) {
-      const newProduct = action.payload;
-      const existingProductIndex = state.products.findIndex(
-        (item) => item.name === newProduct.name
-      );
-
-      if (existingProductIndex !== -1) {
-        // If product exists, update the quantity
-        state.products[existingProductIndex].quantity = newProduct.quantity;
+      if (Array.isArray(action.payload)) {
+        // If an empty array is dispatched, reset the products list
+        state.products = [];
       } else {
-        // Otherwise, add a new product
-        state.products.push(newProduct);
+        const newProduct = action.payload;
+        const existingProductIndex = state.products.findIndex(
+          (item) => item.name === newProduct.name
+        );
+
+        if (existingProductIndex !== -1) {
+          state.products[existingProductIndex].quantity = newProduct.quantity;
+        } else {
+          state.products.push(newProduct);
+        }
       }
     },
-  },
-  setTotalAmount(state, action) {
-    state.totalAmount = action.payload;
-  },
-  setDate(state, action) {
-    state.date = action.payload;
   },
 });
 
@@ -48,6 +45,11 @@ export function CustomerName(name) {
 export function billDatas(product) {
   return function billDatasThunk(dispatch) {
     dispatch(setProducts(product));
-    console.log(product);
+    console.log("bill data", product);
+  };
+}
+export function NullBillDatas() {
+  return function NullBillDatasThunk(dispatch) {
+    dispatch(setProducts([]));
   };
 }
