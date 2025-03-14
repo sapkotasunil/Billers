@@ -5,6 +5,7 @@ import { allBillData } from "../../../../../store/billHistory";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { NullBillDatas, setCustomerName } from "../../../../../store/billdata";
+import { editProductAfterCheckout } from "../../../../../store/product";
 
 const BillLayout = ({ customerName }) => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const BillLayout = ({ customerName }) => {
 
   const submitHandler = () => {
     dispatch(allBillData({ customerName, products, totalAmount, date }));
+    dispatch(editProductAfterCheckout(products));
     setCheckout(true);
   };
 

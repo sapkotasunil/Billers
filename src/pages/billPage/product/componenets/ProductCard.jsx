@@ -22,7 +22,7 @@ const ProductCard = ({ data }) => {
   };
 
   return (
-    <div className="w-[200px] lg:w-[16vw] h-auto border border-gray-400 bg-white shadow-md rounded-lg p-3 space-y-2 transition-all">
+    <div className="w-[200px] lg:w-[16vw] h-auto border border-gray-400 max-h-[341.2px] bg-white shadow-md rounded-lg p-3 space-y-2 transition-all">
       {/* Product Image */}
       <div className="w-full h-[150px] rounded-md overflow-hidden bg-gray-200 flex justify-center items-center">
         <img

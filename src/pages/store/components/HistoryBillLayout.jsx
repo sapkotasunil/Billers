@@ -5,7 +5,12 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { informationf } from "../../../../store/storeslice";
 
-const HistoryBillLayout = ({ customerName, date, products }) => {
+const HistoryBillLayout = ({
+  customerName,
+  date,
+  products,
+  closeBillLayout,
+}) => {
   const dispatch = useDispatch();
   const { informationFetch } = useSelector((state) => state.stores);
   const billRef = useRef(); // Reference to capture the bill section
@@ -37,6 +42,7 @@ const HistoryBillLayout = ({ customerName, date, products }) => {
   return (
     <div className="w-fit mx-auto p-6  bg-white shadow-lg rounded-lg border fixed items-center  top-20 shadow-black  ml-8 ">
       {/* Bill Section to Capture */}
+
       <div ref={billRef}>
         {/* Header */}
         <div className="flex flex-col items-center justify-center">
@@ -105,15 +111,19 @@ const HistoryBillLayout = ({ customerName, date, products }) => {
         </div>
       </div>
       {/* Footer */}
-      <div className="mt-4 text-center text-gray-600 text-sm   flex justify-between">
-        <div>
-          <button
-            onClick={exportToPDF}
-            className="ml-3 text-black cursor-pointer bg-blue-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-blue-400"
-          >
-            Export PDF
-          </button>
-        </div>
+      <div className="mt-4 text-center text-gray-600 text-sm   flex justify-between px-3">
+        <button
+          onClick={exportToPDF}
+          className="ml-3 text-black cursor-pointer bg-blue-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-blue-400"
+        >
+          Export PDF
+        </button>
+        <button
+          onClick={closeBillLayout}
+          className="ml-3 text-black cursor-pointer bg-red-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-red-400"
+        >
+          Close
+        </button>
       </div>
     </div>
   );

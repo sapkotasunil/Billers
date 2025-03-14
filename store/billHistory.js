@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import username from "../global/logedUser";
 
 export const historySlice = createSlice({
   name: "history",
@@ -16,12 +17,13 @@ export default historySlice.reducer;
 
 export function allBillData(billData) {
   return function allBillDataThunk(dispatch) {
-    let detas = JSON.parse(localStorage.getItem("historyBillDatas")) || [];
+    let detas =
+      JSON.parse(localStorage.getItem(`${username}historyBillDatas`)) || [];
     if (!Array.isArray(detas)) {
       detas = [];
     }
     detas.unshift(billData);
-    localStorage.setItem("historyBillDatas", JSON.stringify(detas));
+    localStorage.setItem(`${username}historyBillDatas`, JSON.stringify(detas));
     dispatch(setHistoryDatas(detas));
   };
 }

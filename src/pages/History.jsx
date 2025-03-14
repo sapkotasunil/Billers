@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import HistoryBillLayout from "./store/components/HistoryBillLayout";
+import username from "../../global/logedUser";
 
 const History = () => {
   const [selectedBill, setSelectedBill] = useState(null);
+  const closeBillLayout = () => {
+    setSelectedBill(null);
+  };
 
   // Get data from localStorage and ensure it's a valid array
   const historyData =
-    JSON.parse(localStorage.getItem("historyBillDatas")) || [];
+    JSON.parse(localStorage.getItem(`${username}historyBillDatas`)) || [];
 
   if (!Array.isArray(historyData)) {
     return (
@@ -48,6 +52,7 @@ const History = () => {
                   customerName={data?.customerName}
                   date={data?.date}
                   products={data?.products}
+                  closeBillLayout={closeBillLayout}
                 />
               )}
             </div>

@@ -3,6 +3,7 @@ import Form from "./componenst/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { login, setStatus } from "../../../store/authSlice";
 import { useNavigate } from "react-router-dom";
+import username from "../../../global/logedUser";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,7 +13,9 @@ const Login = () => {
     dispatch(login(data));
   };
   const loggedUser = JSON.parse(localStorage.getItem("logged"));
-  const storeInformation = JSON.parse(localStorage.getItem("storeInformation"));
+  const storeInformation = JSON.parse(
+    localStorage.getItem(`${username}storeInformation`)
+  );
   if (!loggedUser && !storeInformation) {
     useEffect(() => {
       if (status === "sucess") {
