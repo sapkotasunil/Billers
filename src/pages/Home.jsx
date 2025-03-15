@@ -1,5 +1,7 @@
 import React from "react";
+import { IoArrowForward } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -14,8 +16,20 @@ const Home = () => {
             Billing Without the Stress, Business Without Limits
           </p>
           <Link to={"/login"}>
-            <button className="mt-6 px-6 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-200 transition">
-              Get Started
+            <button
+              className="mt-6 px-6 py-3 relative overflow-hidden bg-white text-blue-600 font-semibold 
+                    rounded-md flex items-center gap-2 border-2 
+                    transition-all duration-300 ease-in-out transform hover:scale-105 
+                    group"
+            >
+              <span
+                className="absolute inset-0 bg-green-500 w-0 transition-all duration-400 ease-in-out 
+                   group-hover:w-full"
+              ></span>
+              <span className="relative z-10 flex items-center gap-2 group-hover:text-white">
+                Get Started
+                <IoArrowForward className="transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
             </button>
           </Link>
         </header>
@@ -35,12 +49,8 @@ const Home = () => {
               </p>
             </div>
             <div className="p-6 bg-white shadow-md rounded-lg text-center">
-              <h3 className="text-xl font-semibold text-blue-600">
-                Secure Payments
-              </h3>
-              <p className="mt-2 text-gray-600">
-                Seamless transactions with secure payment integrations.
-              </p>
+              <h3 className="text-xl font-semibold text-blue-600">Simple UI</h3>
+              <p className="mt-2 text-gray-600">Easy to use and Understand</p>
             </div>
             <div className="p-6 bg-white shadow-md rounded-lg text-center">
               <h3 className="text-xl font-semibold text-blue-600">
@@ -53,6 +63,7 @@ const Home = () => {
           </div>
         </section>
       </div>
+      <Footer />
     </>
   );
 };

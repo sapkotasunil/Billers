@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import username from "../global/logedUser";
 
 export const historySlice = createSlice({
   name: "history",
@@ -17,6 +16,8 @@ export default historySlice.reducer;
 
 export function allBillData(billData) {
   return function allBillDataThunk(dispatch) {
+    let { username } = JSON.parse(localStorage.getItem("logged")) || null;
+
     let detas =
       JSON.parse(localStorage.getItem(`${username}historyBillDatas`)) || [];
     if (!Array.isArray(detas)) {

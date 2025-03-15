@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import HistoryBillLayout from "./store/components/HistoryBillLayout";
-import username from "../../global/logedUser";
 
 const History = () => {
+  let { username } = JSON.parse(localStorage.getItem("logged")) || null;
+
   const [selectedBill, setSelectedBill] = useState(null);
   const closeBillLayout = () => {
     setSelectedBill(null);

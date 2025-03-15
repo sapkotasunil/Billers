@@ -45,7 +45,6 @@ export function CustomerName(name) {
 export function billDatas(product) {
   return function billDatasThunk(dispatch) {
     dispatch(setProducts(product));
-    console.log("bill data", product);
   };
 }
 export function NullBillDatas() {

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import username from "../global/logedUser";
 
 const storesSlice = createSlice({
   name: "stores",
@@ -27,12 +26,14 @@ export default storesSlice.reducer;
 export function information(data) {
   return function informationThunk(dispatch) {
     dispatch(setStoreInformation(data));
+    let { username } = JSON.parse(localStorage.getItem("logged")) || null;
     localStorage.setItem(`${username}storeInformation`, JSON.stringify(data));
     dispatch(setStatus("success"));
   };
 }
 export function informationf() {
   return function informationfThunk(dispatch) {
+    let { username } = JSON.parse(localStorage.getItem("logged")) || null;
     dispatch(
       setInformationFetch(
         JSON.parse(localStorage.getItem(`${username}storeInformation`))

@@ -19,6 +19,11 @@ const CustomersName = () => {
   };
   const handlePopup = (e) => {
     setOpeninput(true);
+    try {
+      localStorage.removeItem("checkouted");
+    } catch (error) {
+      console.log("error");
+    }
   };
   return (
     <>

@@ -15,6 +15,11 @@ const BillLayout = ({ customerName }) => {
   const anotherBillHandler = () => {
     dispatch(setCustomerName(null));
     dispatch(NullBillDatas());
+    try {
+      localStorage.removeItem("checkouted");
+    } catch (error) {
+      console.log("error");
+    }
   };
 
   const date = new Date().toLocaleDateString();
@@ -34,8 +39,11 @@ const BillLayout = ({ customerName }) => {
   const submitHandler = () => {
     dispatch(allBillData({ customerName, products, totalAmount, date }));
     dispatch(editProductAfterCheckout(products));
+    localStorage.setItem("checkouted", JSON.stringify("checkouted"));
     setCheckout(true);
   };
+
+  const checkoutActive = JSON.parse(localStorage.getItem("checkouted"));
 
   //  Function to Export PDF
   const exportToPDF = () => {
@@ -51,7 +59,7 @@ const BillLayout = ({ customerName }) => {
   };
 
   return (
-    <div className="w-fit mx-auto py-2 px-6 bg-white shadow-lg rounded-lg   border  ">
+    <div className="w-fit mx-auto py-2 px-6 min-w-[325px] bg-white shadow-lg rounded-lg   border  ">
       {/* Bill Section to Capture */}
       <div ref={billRef}>
         {/* Header */}
@@ -125,7 +133,7 @@ const BillLayout = ({ customerName }) => {
       {/* Footer */}
       <div className="mt-4 text-center text-gray-600 text-sm   flex justify-between">
         <div>
-          {Checkout == false ? (
+          {Checkout == false && !checkoutActive ? (
             <button
               onClick={submitHandler}
               className="text-black cursor-pointer bg-green-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-green-400"

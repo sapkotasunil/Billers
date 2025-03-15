@@ -29,7 +29,11 @@ const Navbar = () => {
         >
           History
         </Link>
-        <Link to="/" className="hover:text-yellow-300 transition duration-300">
+        <Link
+          to="/"
+          onClick={() => localStorage.removeItem("logged")}
+          className="hover:text-yellow-300 transition duration-300"
+        >
           Log out
         </Link>
       </div>

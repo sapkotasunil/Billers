@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Form = ({ type, userData }) => {
   const [data, setData] = useState({
@@ -23,10 +23,10 @@ const Form = ({ type, userData }) => {
   return (
     <>
       <div className=" font-[sans-serif]">
-        <div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+        <div className="min-h-screen   flex flex-col items-center justify-center py-6 px-4">
           <div className="max-w-md w-full">
-            <div className="p-8 rounded-2xl bg-white shadow">
-              <h2 className="text-gray-800 text-center text-2xl font-bold">
+            <div className="p-8 rounded-2xl bg-gray-100 shadow">
+              <h2 className=" bg-gray-100 text-center text-2xl font-bold text-green-500">
                 {type} here to continue
               </h2>
               <form className="mt-8 space-y-4" onSubmit={submitHandler}>

@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import username from "../global/logedUser";
-
 const productSlice = createSlice({
   name: "product",
   initialState: {
@@ -28,6 +26,7 @@ export default productSlice.reducer;
 export function addProduct(data) {
   return function addProductThunk(dispatch) {
     dispatch(setProductData(data));
+    let { username } = JSON.parse(localStorage.getItem("logged")) || null;
     let productDatas =
       JSON.parse(localStorage.getItem(`${username}productData`)) || [];
     if (!Array.isArray(productDatas)) {
@@ -43,6 +42,8 @@ export function addProduct(data) {
 }
 export function allProductdata() {
   return function allProductdataThunk(dispatch) {
+    let { username } = JSON.parse(localStorage.getItem("logged")) || null;
+
     dispatch(
       setAllProduct(JSON.parse(localStorage.getItem(`${username}productData`)))
     );
@@ -51,6 +52,8 @@ export function allProductdata() {
 
 export function editProduct(productName, value, types) {
   return function editProductThunk(dispatch) {
+    let { username } = JSON.parse(localStorage.getItem("logged")) || null;
+
     let productDatas =
       JSON.parse(localStorage.getItem(`${username}productData`)) || [];
     const index = productDatas.findIndex((item) => item.name == productName);
@@ -73,6 +76,8 @@ export function editProduct(productName, value, types) {
 }
 export function editProductAfterCheckout(soldProducts) {
   return function editProductThunk(dispatch) {
+    let { username } = JSON.parse(localStorage.getItem("logged")) || null;
+
     let productDatas =
       JSON.parse(localStorage.getItem(`${username}productData`)) || [];
 
