@@ -49,20 +49,24 @@ const StoreBillForm = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Store Name */}
             <div>
-              <label className="block font-medium">Store Name</label>
+              <label className="block font-medium text-blue-600">
+                Store Name
+              </label>
               <input
                 type="text"
                 name="name"
                 value={store.name}
                 onChange={handleChange}
-                className="w-full border p-2 rounded-md focus:ring focus:ring-blue-200"
+                className="w-full border p-2 rounded-md focus:ring focus:ring-blue-200 "
                 required
               />
             </div>
 
             {/* Owner Name */}
             <div>
-              <label className="block font-medium">Owner Name</label>
+              <label className="block font-medium text-blue-600">
+                Owner Name
+              </label>
               <input
                 type="text"
                 name="owner"
@@ -75,7 +79,7 @@ const StoreBillForm = () => {
 
             {/* Address */}
             <div>
-              <label className="block font-medium">Address</label>
+              <label className="block font-medium text-blue-600">Address</label>
               <input
                 type="text"
                 name="address"
@@ -88,7 +92,9 @@ const StoreBillForm = () => {
 
             {/* Contact Number */}
             <div>
-              <label className="block font-medium">Contact Number</label>
+              <label className="block font-medium text-blue-600">
+                Contact Number
+              </label>
               <input
                 type="text"
                 name="contact"
@@ -101,7 +107,7 @@ const StoreBillForm = () => {
 
             {/* Email */}
             <div>
-              <label className="block font-medium">Email</label>
+              <label className="block font-medium text-blue-600">Email</label>
               <input
                 type="email"
                 name="email"

@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className=" overflow-hidden  w-full py-4 px-6  bg-gradient-to-r from-blue-600 to-green-500 mb-5 text-white shadow-md flex justify-between pb-3 items-center">
+    <nav className=" overflow-hidden  w-full py-4 px-3  bg-gradient-to-r from-blue-600 to-green-500 mb-5 text-white shadow-md flex justify-between pb-3 items-center">
       {/* Logo */}
       <Link to={"/"}>
-        <div className="text-3xl font-bold tracking-wide">💰 Billers</div>
+        <div className="text-3xl text-green-500 font-bold tracking-wide px-3">
+          Bill<span className=" text-3xl text-white">ers</span>
+        </div>
       </Link>
 
       {/* Navigation Links */}

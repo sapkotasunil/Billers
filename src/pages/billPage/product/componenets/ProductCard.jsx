@@ -19,6 +19,7 @@ const ProductCard = ({ data }) => {
     e.preventDefault();
     dispatch(billDatas(product));
     setProductNumber(0);
+    console.log(data.name);
   };
 
   return (

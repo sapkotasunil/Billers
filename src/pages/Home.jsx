@@ -8,11 +8,11 @@ const Home = () => {
     <>
       <div className="min-h-screen  bg-gray-100 flex flex-col ">
         {/* Hero Section */}
-        <header className="bg-blue-600 text-white py-16 text-center h-screen flex flex-col items-center justify-center">
+        <header className="bg-blue-300 text-blue-600 py-16 text-center h-screen flex flex-col items-center justify-center">
           <h1 className="text-4xl font-bold">
             Simplify Your Bills, Amplify Your Business
           </h1>
-          <p className="mt-4 text-lg">
+          <p className="mt-4 text-lg text-green-600">
             Billing Without the Stress, Business Without Limits
           </p>
           <Link to={"/login"}>

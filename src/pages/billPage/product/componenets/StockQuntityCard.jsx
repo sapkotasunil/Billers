@@ -1,7 +1,7 @@
 import React from "react";
 import StockQuantityCardButtons from "./stockQuantityCard/StockQuantityCardButtons";
 
-const StockQutityCard = ({ data }) => {
+const StockQutityCard = ({ data, searchValue }) => {
   return (
     <div className="w-[250px] h-fit border-2 border-gray-600 bg-white shadow-lg rounded-lg p-4 space-y-4">
       {/* Product Image */}

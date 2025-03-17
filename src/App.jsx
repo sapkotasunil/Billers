@@ -13,11 +13,13 @@ import Register from "./pages/auth/Register";
 import History from "./pages/History";
 import { Provider } from "react-redux";
 import store from "../store/store";
-import CustomersName from "./pages/billPage/bill/components/CustomersName";
 
 const App = () => {
   return (
-    <div className="bg-gradient-to-r from-yellow-500 to-green-500 min-h-screen h-full w-full overflow-x-hidden">
+    <div
+      className="bg-blue-300
+ min-h-screen h-full w-full overflow-x-hidden"
+    >
       <Provider store={store}>
         <BrowserRouter>
           <Routes>

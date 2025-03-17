@@ -6,6 +6,7 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import { NullBillDatas, setCustomerName } from "../../../../../store/billdata";
 import { editProductAfterCheckout } from "../../../../../store/product";
+import NepaliDate from "nepali-datetime";
 
 const BillLayout = ({ customerName }) => {
   const dispatch = useDispatch();
@@ -21,8 +22,12 @@ const BillLayout = ({ customerName }) => {
       console.log("error");
     }
   };
+  const [date, setDate] = useState("");
+  useEffect(() => {
+    const now = new NepaliDate(); // Get current Nepali date
+    setDate(now.format("YYYY-MM-DD")); // Format as YYYY-MM-DD
+  }, []);
 
-  const date = new Date().toLocaleDateString();
   const billRef = useRef(); // Reference to capture the bill section
 
   useEffect(() => {
@@ -59,7 +64,7 @@ const BillLayout = ({ customerName }) => {
   };
 
   return (
-    <div className="w-fit mx-auto py-2 px-6 min-w-[325px] bg-white shadow-lg rounded-lg   border  ">
+    <div className="w-fit mx-auto border-l-2 py-2 px-6 min-w-[325px] bg-white shadow-lg rounded-lg   border  ">
       {/* Bill Section to Capture */}
       <div ref={billRef}>
         {/* Header */}

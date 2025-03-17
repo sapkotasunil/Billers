@@ -26,14 +26,14 @@ const Form = ({ type, userData }) => {
         <div className="min-h-screen   flex flex-col items-center justify-center py-6 px-4">
           <div className="max-w-md w-full">
             <div className="p-8 rounded-2xl bg-gray-100 shadow">
-              <h2 className=" bg-gray-100 text-center text-2xl font-bold text-green-500">
-                {type} here to continue
+              <h2 className=" bg-gray-100 text-2xl font-bold text-green-500">
+                {type} here to continue...
               </h2>
               <form className="mt-8 space-y-4" onSubmit={submitHandler}>
                 <div>
                   <label
                     htmlFor="email"
-                    className="text-gray-800 text-sm mb-2 block"
+                    className=" font-medium mb-2 block text-blue-500"
                   >
                     Email
                   </label>
@@ -73,7 +73,7 @@ const Form = ({ type, userData }) => {
                   <div>
                     <label
                       htmlFor="username"
-                      className="text-gray-800 text-sm mb-2 block"
+                      className="text-blue-600 mb-2 block t"
                     >
                       User name
                     </label>
@@ -114,7 +114,7 @@ const Form = ({ type, userData }) => {
                 <div>
                   <label
                     htmlFor="password"
-                    className="text-gray-800 text-sm mb-2 block"
+                    className="text-blue-600 mb-2 block"
                   >
                     Password
                   </label>
@@ -145,31 +145,6 @@ const Form = ({ type, userData }) => {
                         data-original="#000000"
                       ></path>
                     </svg>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex items-center">
-                    <input
-                      id="remember-me"
-                      name="remember-me"
-                      type="checkbox"
-                      className="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                    />
-                    <label
-                      htmlFor="remember-me"
-                      className="ml-3 block text-sm text-gray-800"
-                    >
-                      Remember me
-                    </label>
-                  </div>
-                  <div className="text-sm">
-                    <a
-                      href="jajvascript:void(0);"
-                      className="text-blue-600 hover:underline font-semibold"
-                    >
-                      Forgot your password?
-                    </a>
                   </div>
                 </div>
 
