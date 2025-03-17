@@ -34,7 +34,7 @@ const BillLayout = ({ customerName }) => {
     if (!informationFetch) {
       dispatch(informationf());
     }
-  }, []);
+  }, [informationFetch, products, dispatch, customerName]);
 
   const totalAmount = (products || []).reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -85,45 +85,39 @@ const BillLayout = ({ customerName }) => {
         </div>
 
         {/* Customer Details */}
-        <div className="mt-2 border-t pt-2">
-          <h2 className="text-lg font-semibold">Bill To:</h2>
-          <p className="text-gray-700">{customerName}</p>
+        <div className="mt-2 border-t pt-2 flex  items-center">
+          <h2 className="text-lg font-semibold">Name: </h2>
+          <p className="text-gray-700 ml-1"> {customerName}</p>
         </div>
 
         {/* Bill Table */}
         <div className="mt-2">
-          {products.length === 0 ? (
-            <p className="text-center text-gray-500 mt-2">
-              No products added to the bill.
-            </p>
-          ) : (
-            <table className="w-full border-collapse border">
-              <thead>
-                <tr className="bg-gray-200">
-                  <th className="border p-2">Item</th>
-                  <th className="border p-2">Price</th>
-                  <th className="border p-2">Quantity</th>
-                  <th className="border p-2">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products
-                  .filter((item) => item.quantity > 0) // Filters out products with quantity 0
-                  .map((item, index) => (
-                    <tr key={index} className="">
-                      <td className="border px-2 py-1 ">{item.name}</td>
-                      <td className="border px-2 py-1">Rs. {item.price}</td>
-                      <td className="border px-2 text-center py-1">
-                        {item.quantity}
-                      </td>
-                      <td className="border px-2 py-1">
-                        Rs. {item.price * item.quantity}
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          )}
+          <table className="w-full border-collapse border">
+            <thead>
+              <tr className="bg-gray-200">
+                <th className="border p-2">Item</th>
+                <th className="border p-2">Price</th>
+                <th className="border p-2">Quantity</th>
+                <th className="border p-2">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products
+                .filter((item) => item.quantity > 0) // Filters out products with quantity 0
+                .map((item, index) => (
+                  <tr key={index} className="">
+                    <td className="border px-2 py-1 ">{item.name}</td>
+                    <td className="border px-2 py-1">Rs. {item.price}</td>
+                    <td className="border px-2 text-center py-1">
+                      {item.quantity}
+                    </td>
+                    <td className="border px-2 py-1">
+                      Rs. {item.price * item.quantity}
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
         </div>
 
         {/* Total Amount */}
@@ -139,12 +133,20 @@ const BillLayout = ({ customerName }) => {
       <div className="mt-4 text-center text-gray-600 text-sm   flex justify-between">
         <div>
           {Checkout == false && !checkoutActive ? (
-            <button
-              onClick={submitHandler}
-              className="text-black cursor-pointer bg-green-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-green-400"
-            >
-              Checkout
-            </button>
+            <div>
+              <button
+                onClick={submitHandler}
+                className="text-black cursor-pointer bg-green-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-green-400"
+              >
+                Checkout
+              </button>
+              <button
+                onClick={anotherBillHandler}
+                className="ml-3 text-black cursor-pointer bg-green-500 px-3 py-1 rounded-md font-semibold max-h-7 hover:bg-blue-400"
+              >
+                Cancel
+              </button>
+            </div>
           ) : (
             <>
               <button

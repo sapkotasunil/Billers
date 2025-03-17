@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCustomerName } from "../../../../../store/billdata";
 import { useNavigate } from "react-router-dom";
+import { informationf } from "../../../../../store/storeslice";
 
 const CustomersName = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const CustomersName = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(setCustomerName(customerName));
+    dispatch(informationf());
     setOpeninput(false);
     setcustomerName("");
   };

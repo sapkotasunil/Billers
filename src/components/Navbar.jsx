@@ -1,7 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { setCustomerName } from "../../store/billdata";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const logoutHandler = () => {
+    localStorage.removeItem("logged");
+    dispatch(setCustomerName(null));
+  };
   return (
     <nav className=" overflow-hidden  w-full py-4 px-3  bg-gradient-to-r from-blue-600 to-green-500 mb-5 text-white shadow-md flex justify-between pb-3 items-center">
       {/* Logo */}
@@ -33,7 +40,7 @@ const Navbar = () => {
         </Link>
         <Link
           to="/"
-          onClick={() => localStorage.removeItem("logged")}
+          onClick={logoutHandler}
           className="hover:text-yellow-300 transition duration-300"
         >
           Log out

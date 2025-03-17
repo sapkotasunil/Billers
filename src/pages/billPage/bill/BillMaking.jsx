@@ -19,6 +19,9 @@ const BillMaking = () => {
   }, []);
 
   const [Searchvalue, SetSearchvalue] = useState("");
+  // useEffect(() => {
+  //   location.reload();
+  // }, []);
 
   return (
     <>
@@ -40,8 +43,8 @@ const BillMaking = () => {
                           .toLowerCase()
                           .includes(Searchvalue.toLowerCase())
                       )
-                      .map((data, idx) => (
-                        <ProductCard key={idx} data={data} />
+                      .map((data) => (
+                        <ProductCard key={data.name} data={data} />
                       ))}
               </div>
               <div className="w-2/6 ">
