@@ -45,7 +45,7 @@ const ProductCard = ({ data }) => {
           {data.quantity >= 0 ? (
             <p>Available Stock: {data.quantity}</p>
           ) : (
-            <p>OverSold stock: {Math.abs(data.quantity)}</p>
+            <p>Over sold stock: {Math.abs(data.quantity)}</p>
           )}
         </div>
       </div>

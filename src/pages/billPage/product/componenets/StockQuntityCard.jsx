@@ -20,10 +20,13 @@ const StockQutityCard = ({ data }) => {
         <p className="text-lg font-semibold text-yellow-600">
           Price: {data.price}
         </p>
-        <p className="text-gray-700 font-medium">
-          Quantity Available:
-          <span className="font-semibold">{data.quantity}</span>
-        </p>
+        <div className="text-sm font-semibold text-green-600">
+          {data.quantity >= 0 ? (
+            <p>Available Stock: {data.quantity}</p>
+          ) : (
+            <p>Over sold stock: {Math.abs(data.quantity)}</p>
+          )}
+        </div>
         <br />
         <div className="flex w-full justify-between px-2">
           <StockQuantityCardButtons

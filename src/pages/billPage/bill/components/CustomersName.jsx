@@ -49,6 +49,7 @@ const CustomersName = () => {
             onChange={handleChange}
             type="text"
             className="  h-8 w-60 rounded-lg px-1"
+            required
           />{" "}
           <br />
           <button className="bg-green-600 px-5 py-1 rounded-lg mt-2 hover:bg-green-500 ">

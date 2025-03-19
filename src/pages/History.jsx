@@ -44,7 +44,9 @@ const History = () => {
                   onClick={() =>
                     setSelectedBill(selectedBill === idx ? null : idx)
                   }
-                  className="text-xl rounded-md bg-green-500 px-3 font-semibold cursor-pointer"
+                  className={`${
+                    selectedBill === idx ? "bg-red-500" : "bg-green-500"
+                  }  text-xl rounded-md bg-green-500 px-3 font-semibold cursor-pointer`}
                 >
                   {selectedBill === idx ? "Close Bill" : "View Bill"}
                 </button>
