@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ImCross } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { addProduct, setStatus } from "../../../../../store/product";
 
-const ProductStockForm = ({ close, open }) => {
+const ProductStockForm = ({ close }) => {
   const dispatch = useDispatch();
   const { status } = useSelector((state) => state.product);
   const [product, setProduct] = useState({
@@ -21,11 +20,9 @@ const ProductStockForm = ({ close, open }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addProduct(product));
-    console.log(product);
   };
   useEffect(() => {
     if (status === "success") {
-      console.log("true");
       close();
       dispatch(setStatus(null));
     }
@@ -41,7 +38,7 @@ const ProductStockForm = ({ close, open }) => {
         className="max-w-md min-w-[30vw] mx-auto p-6 bg-white shadow-lg rounded-lg"
       >
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold text-blue-500">
+          <h2 className="text-2xl font-bold text-green-500">
             Add Product Stock
           </h2>
           <button onClick={close} className="text-green-500">
@@ -72,7 +69,6 @@ const ProductStockForm = ({ close, open }) => {
               value={product.image}
               onChange={handleChange}
               className="w-full border p-2 rounded-md"
-              required
             />
           </div>
 
@@ -98,7 +94,6 @@ const ProductStockForm = ({ close, open }) => {
               value={product.quantity}
               onChange={handleChange}
               className="w-full border p-2 rounded-md focus:ring focus:ring-blue-200"
-              required
             />
           </div>
 

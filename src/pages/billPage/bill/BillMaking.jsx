@@ -33,7 +33,7 @@ const BillMaking = () => {
             <div className="w-[100vh]  items-start mb-1">
               <SearchBar SetSearchvalue={SetSearchvalue} />
             </div>
-            <div className="w-full h-full flex flex-col-reverse md:flex-row bg-blue-300 px-5 ">
+            <div className="w-full h-full flex flex-col-reverse gap-4 lg:gap-0 lg:flex-row bg-blue-300 px-5 ">
               <div className="flex flex-wrap gap-3 w-5/6">
                 {!allProduct
                   ? ""

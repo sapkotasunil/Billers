@@ -64,7 +64,7 @@ const BillLayout = ({ customerName }) => {
   };
 
   return (
-    <div className="w-fit mx-auto border-l-2 py-2 px-6 min-w-[325px] bg-white shadow-lg rounded-lg   border  ">
+    <div className="w-fit mx-auto border-l-2 py-2 px-[1vw]  bg-white shadow-lg rounded-lg   border  ">
       {/* Bill Section to Capture */}
       <div ref={billRef}>
         {/* Header */}
@@ -74,12 +74,16 @@ const BillLayout = ({ customerName }) => {
           </h1>
           <p className="text-sm text-gray-600">{informationFetch?.address}</p>
         </div>
-        <div className="flex justify-between px-1 gap-4">
+        <div className="flex flex-row-reverse justify-between px-1 gap-4">
           <div className="text-center flex items-end">
-            <p className="text-sm text-gray-600">Date: {date}</p>
+            <p className="text-sm whitespace-nowrap text-gray-600">
+              Date: {date}
+            </p>
           </div>
           <div className="flex  flex-col mt-2 font-semibold justify-end">
-            <h1>proprietor: {informationFetch?.owner}</h1>
+            <h1 className="whitespace-nowrap ">
+              proprietor: {informationFetch?.owner}
+            </h1>
             <h1>Contact No: {informationFetch?.contact}</h1>
           </div>
         </div>

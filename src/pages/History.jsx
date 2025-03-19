@@ -30,10 +30,13 @@ const History = () => {
         historyData
           .filter((data) => data !== null) // Remove null values
           .map((data, idx) => (
-            <div key={idx} className="w-screen flex flex-col items-center my-2">
-              <div className="w-3/4 h-16 flex justify-between px-3 items-center rounded-lg text-2xl bg-blue-200">
+            <div
+              key={idx}
+              className="w-screen  h-full flex flex-col items-center my-2"
+            >
+              <div className="w-fit flex-wrap my-6 lg:my-0 lg:w-3/4 h-16 flex py-1 justify-between px-3 items-center rounded-lg text-2xl bg-blue-200">
                 <h1>{data?.date}</h1>
-                <div className="flex justify-between gap-4 w-96">
+                <div className="flex justify-between  gap-4 w-96">
                   <h1>{data?.customerName}</h1>
                   <h1>Total Amount: {data?.totalAmount}</h1>
                 </div>

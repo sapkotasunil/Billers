@@ -19,7 +19,6 @@ const ProductCard = ({ data }) => {
     e.preventDefault();
     dispatch(billDatas(product));
     setProductNumber(0);
-    console.log(data.name);
   };
 
   return (
@@ -28,12 +27,9 @@ const ProductCard = ({ data }) => {
       <div className="w-full h-[150px] rounded-md overflow-hidden bg-gray-200 flex justify-center items-center">
         <img
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-          src={data.image}
+          src={data.image ? data.image : "logo.png"}
           alt={data.name}
-          onError={(e) =>
-            (e.target.src =
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf2kFKIsg6Ec7sPXCrwusiUyLhFrcKtB9YDQ&s")
-          }
+          onError={(e) => (e.target.src = "logo.png")}
         />
       </div>
 
@@ -45,9 +41,13 @@ const ProductCard = ({ data }) => {
         <p className="text-sm font-semibold text-yellow-600">
           Rs. {data.price}
         </p>
-        <p className="text-sm font-semibold  text-green-600">
-          Available Stock: {data.quantity}
-        </p>
+        <div className="text-sm font-semibold text-green-600">
+          {data.quantity >= 0 ? (
+            <p>Available Stock: {data.quantity}</p>
+          ) : (
+            <p>OverSold stock: {Math.abs(data.quantity)}</p>
+          )}
+        </div>
       </div>
 
       {/* Quantity Controls */}

@@ -9,7 +9,6 @@ const Register = () => {
   const { status } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const registerData = (data) => {
-    console.log(data);
     dispatch(register(data));
   };
   useEffect(() => {

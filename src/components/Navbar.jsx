@@ -10,11 +10,15 @@ const Navbar = () => {
     dispatch(setCustomerName(null));
   };
   return (
-    <nav className=" overflow-hidden  w-full py-4 px-3  bg-gradient-to-r from-blue-600 to-green-500 mb-5 text-white shadow-md flex justify-between pb-3 items-center">
+    <nav className=" overflow-hidden  w-full py-4 px-3  bg-gradient-to-r from-yellow-400 to-green-500 mb-5 text-white shadow-md flex justify-between pb-3 items-center">
       {/* Logo */}
       <Link to={"/"}>
-        <div className="text-3xl text-green-500 font-bold tracking-wide px-3">
-          Bill<span className=" text-3xl text-white">ers</span>
+        <div className="px-3">
+          <img
+            className=" h-12 w-30 scale-150"
+            src="navbarLogo.png"
+            alt="error"
+          />
         </div>
       </Link>
 

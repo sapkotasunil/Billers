@@ -1,19 +1,16 @@
 import React from "react";
 import StockQuantityCardButtons from "./stockQuantityCard/StockQuantityCardButtons";
 
-const StockQutityCard = ({ data, searchValue }) => {
+const StockQutityCard = ({ data }) => {
   return (
     <div className="w-[250px] h-fit border-2 border-gray-600 bg-white shadow-lg rounded-lg p-4 space-y-4">
       {/* Product Image */}
       <div className="w-full h-[200px] rounded-md overflow-hidden bg-gray-200 flex justify-center items-center">
         <img
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-          src={data.image}
-          alt="Samsung TV"
-          onError={(e) =>
-            (e.target.src =
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf2kFKIsg6Ec7sPXCrwusiUyLhFrcKtB9YDQ&s")
-          }
+          src={data.image ? data.image : "logo.png"}
+          alt="Loading..."
+          onError={(e) => (e.target.src = "logo.png")}
         />
       </div>
 
@@ -24,7 +21,7 @@ const StockQutityCard = ({ data, searchValue }) => {
           Price: {data.price}
         </p>
         <p className="text-gray-700 font-medium">
-          Quantity Available:{" "}
+          Quantity Available:
           <span className="font-semibold">{data.quantity}</span>
         </p>
         <br />

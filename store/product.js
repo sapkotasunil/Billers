@@ -68,7 +68,6 @@ export function editProduct(productName, value, types) {
       `${username}productData`,
       JSON.stringify(productDatas)
     );
-    console.log(productDatas);
 
     dispatch(setAllProduct(productDatas));
     dispatch(setStatus("success"));
@@ -86,8 +85,8 @@ export function editProductAfterCheckout(soldProducts) {
         (item) => item.name === soldItem.name
       );
       if (index !== -1) {
-        let oldStock = parseInt(productDatas[index].quantity);
-        let sellStock = parseInt(soldItem.quantity);
+        let oldStock = parseInt(productDatas[index].quantity) || 0;
+        let sellStock = parseInt(soldItem.quantity) || 0;
         productDatas[index].quantity = oldStock - sellStock; // Ensuring stock doesn't go negative
       }
     });
